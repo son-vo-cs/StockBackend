@@ -39,7 +39,7 @@ public class CountryController {
 	
 	
 	@GetMapping("/country/specific")
-	public ResponseEntity<Country> getCountriesByNameVal(@RequestBody String name, @RequestBody Long population) throws ResourceNotFoundException
+	public ResponseEntity<Country> getCountriesByNameVal(String name, Long population) throws ResourceNotFoundException
 	{
 		Country country = countryRep.findCountryByNameVal(name, population); 
 		return ResponseEntity.ok().body(country);
