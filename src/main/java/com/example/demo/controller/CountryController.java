@@ -33,7 +33,7 @@ public class CountryController {
 	{
 //		Country country = countryRep.findById(countryId).orElseThrow(
 //				() -> new ResourceNotFoundException("Not found id"));
-		Country country = countryRep.findCountryByNameVal("China", 5L); 
+		Country country = countryRep.findCountryByNameVal(5L); 
 		return ResponseEntity.ok().body(country);
 	}
 	
@@ -42,7 +42,7 @@ public class CountryController {
 	@GetMapping("/country/specific")
 	public ResponseEntity<Country> getCountriesByNameVal(String name, Long population) throws ResourceNotFoundException
 	{
-		Country country = countryRep.findCountryByNameVal(name, population); 
+		Country country = countryRep.findCountryByNameVal(population); 
 		return ResponseEntity.ok().body(country);
 //		return ResponseEntity.ok().body(new Country());
 	}
