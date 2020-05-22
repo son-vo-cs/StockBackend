@@ -9,8 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 @Repository
 public interface CountryRepository extends JpaRepository<Country, Long>{
-	@Query("SELECT coun.countryName, coun.population FROM Country coun where coun.countryName = :name "
-			+ "AND coun.population = :population" )
+	@Query("SELECT coun FROM Country coun where coun.population = :population")
 	Country findCountryByNameVal(@Param("name") String name, @Param("population") Long population);
 
 }

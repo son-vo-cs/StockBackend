@@ -31,8 +31,9 @@ public class CountryController {
 	@GetMapping("/country/{id}")
 	public ResponseEntity<Country> getCountriesById(@PathVariable(value = "id") long countryId) throws ResourceNotFoundException
 	{
-		Country country = countryRep.findById(countryId).orElseThrow(
-				() -> new ResourceNotFoundException("Not found id"));
+//		Country country = countryRep.findById(countryId).orElseThrow(
+//				() -> new ResourceNotFoundException("Not found id"));
+		Country country = countryRep.findCountryByNameVal("China", 5L); 
 		return ResponseEntity.ok().body(country);
 	}
 	
