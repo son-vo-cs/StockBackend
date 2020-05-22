@@ -31,21 +31,30 @@ public class CountryController {
 	@GetMapping("/country/{id}")
 	public ResponseEntity<Country> getCountriesById(@PathVariable(value = "id") long countryId) throws ResourceNotFoundException
 	{
+		Country country = countryRep.findById(countryId).orElseThrow(
+				() -> new ResourceNotFoundException("Not found id"));
+//		Country country = countryRep.findCountryByNameVal(5L); 
+		return ResponseEntity.ok().body(country);
+	}
+	
+	@GetMapping("/countryTest")
+	public List<Country> testCountry() throws ResourceNotFoundException
+	{
 //		Country country = countryRep.findById(countryId).orElseThrow(
 //				() -> new ResourceNotFoundException("Not found id"));
-		Country country = countryRep.findCountryByNameVal(5L); 
-		return ResponseEntity.ok().body(country);
+		List<Country> country = countryRep.findCountryByNameVal(5L); 
+		return country;
 	}
 	
 	
 	
-	@GetMapping("/country/specific")
-	public ResponseEntity<Country> getCountriesByNameVal(String name, Long population) throws ResourceNotFoundException
-	{
-		Country country = countryRep.findCountryByNameVal(population); 
-		return ResponseEntity.ok().body(country);
-//		return ResponseEntity.ok().body(new Country());
-	}
+//	@GetMapping("/country/specific")
+//	public ResponseEntity<Country> getCountriesByNameVal(String name, Long population) throws ResourceNotFoundException
+//	{
+//		List<Country >country = countryRep.findCountryByNameVal(population); 
+//		return ResponseEntity.ok().body(country);
+////		return ResponseEntity.ok().body(new Country());
+//	}
 	
 	
 //	@PostMapping(value = "countries", consumes = {"application/xml", "application/json"})
