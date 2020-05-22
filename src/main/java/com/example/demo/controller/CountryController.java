@@ -36,6 +36,16 @@ public class CountryController {
 		return ResponseEntity.ok().body(country);
 	}
 	
+	
+	
+	@GetMapping("/country/specific")
+	public ResponseEntity<Country> getCountriesByNameVal(@RequestBody String name, @RequestBody Long population) throws ResourceNotFoundException
+	{
+		Country country = countryRep.findCountryByNameVal(name, population);
+		return ResponseEntity.ok().body(country);
+	}
+	
+	
 //	@PostMapping(value = "countries", consumes = {"application/xml", "application/json"})
 //	@RequestMapping(value = "countries", method = RequestMethod.POST,
 //			consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
