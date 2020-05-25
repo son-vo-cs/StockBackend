@@ -13,6 +13,12 @@ public class Perform {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	public Perform(long id, String date, float price) {
+		super();
+		this.id = id;
+		this.date = date;
+		this.price = price;
+	}
 	
 	
 }
