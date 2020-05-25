@@ -39,7 +39,6 @@ public class Country {
 		this.countryName = countryName;
 	}
 	
-	@Column(name = "population")
 	public long getPopulation() {
 		return population;
 	}
