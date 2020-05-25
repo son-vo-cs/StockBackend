@@ -38,7 +38,7 @@ public class CountryController {
 	}
 	
 	@GetMapping("/countryTest")
-	public List<Country> testCountry() throws ResourceNotFoundException
+	public List<Country> testCountry(Long population) throws ResourceNotFoundException
 	{
 //		Country country = countryRep.findById(countryId).orElseThrow(
 //				() -> new ResourceNotFoundException("Not found id"));
