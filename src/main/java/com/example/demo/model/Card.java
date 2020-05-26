@@ -11,8 +11,7 @@ import javax.persistence.Table;
 public class Card {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long cid;
+	private String cid;
 	
 	private long uid;
 	private String name, expire;
@@ -20,7 +19,7 @@ public class Card {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Card(long cid, long uid, String name, String expire) {
+	public Card(String cid, long uid, String name, String expire) {
 		super();
 		this.cid = cid;
 		this.uid = uid;
@@ -28,11 +27,11 @@ public class Card {
 		this.expire = expire;
 	}
 	
-	public long getCid() {
+	public String getCid() {
 		return cid;
 	}
 	
-	public void setCid(long cid) {
+	public void setCid(String cid) {
 		this.cid = cid;
 	}
 	
