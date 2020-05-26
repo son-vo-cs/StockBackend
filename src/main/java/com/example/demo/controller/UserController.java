@@ -21,17 +21,21 @@ public class UserController {
 	private UserRepository userRep;
 	
 	@PostMapping("/login")
-	public List<AppUser> login(String email, String pass) throws ResourceNotFoundException
+	public List<AppUser> login(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
 	{
 		
+		String email = (String) map.get("email");
+		String pass = (String) map.get("password");
 		List<AppUser> users = userRep.login(email,  pass); 
 		return users;
 	}
 
 	@PutMapping("/set-fund")
-	public void setFund(long id, float fund) throws ResourceNotFoundException
+	public void setFund(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
 	{
 		
+		float fund = ((Float) map.get("fund")).floatValue();
+		long id = ((Long) map.get("id")).longValue();
 		userRep.setFun(fund, id);
 	}
 	
