@@ -20,7 +20,7 @@ public class UserController {
 	@Autowired
 	private UserRepository userRep;
 	
-	@PostMapping("/login")
+	@PostMapping("login")
 	public List<AppUser> login(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
 	{
 		
@@ -30,7 +30,7 @@ public class UserController {
 		return users;
 	}
 
-	@PutMapping("/set-fund")
+	@PutMapping("set-fund")
 	public void setFund(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
 	{
 		
