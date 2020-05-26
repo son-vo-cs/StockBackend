@@ -9,19 +9,28 @@ import com.example.demo.model.AppUser;
 import com.example.demo.model.Country;
 
 import org.springframework.data.repository.query.Param;
-
+import org.springframework.data.jpa.repository.Modifying;
 @Repository
 public interface UserRepository extends JpaRepository<AppUser, Long>{
 	@Query("SELECT user FROM AppUser user where user.email = :email AND user.password = :password")
 	List<AppUser> login(@Param("email") String email, @Param("password") String pass);
+	
+	@Modifying
+	@Query("update AppUser u set u.fund = :fund where u.id = :id")
+	void setFun(@Param("fund") float fund, @Param("id") long id);
+	
+	
+	
+	
+	
 }
 
 
 /*
  * 
- * check if email + pass is correct
-	add fund
-	subtract fund
+ * check if email + pass is correct.. 
+	add fund........
+	subtract fund......
 	add deposit
-	withdraw
+	withdraw........
 */
