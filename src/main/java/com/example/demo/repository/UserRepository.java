@@ -12,8 +12,8 @@ import org.springframework.data.repository.query.Param;
 
 @Repository
 public interface UserRepository extends JpaRepository<AppUser, Long>{
-	@Query("SELECT coun FROM Country coun where coun.population >= :population")
-	List<Country> findCountryByNameVal(@Param("population") Long population);
+	@Query("SELECT user FROM AppUser user where user.email = :email AND user.password = :password")
+	List<AppUser> login(@Param("email") String email, @Param("password") String pass);
 }
 
 
