@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.validation.annotation.Validated;
 import org.springframework.http.HttpStatus;
 import com.example.demo.model.Country;
 import com.example.demo.repository.CountryRepository;
@@ -37,12 +37,15 @@ public class CountryController {
 		return ResponseEntity.ok().body(country);
 	}
 	
-	@GetMapping("/countryTest")
-	public List<Country> testCountry(Long population) throws ResourceNotFoundException
+	@PostMapping("/countryTest")
+	public List<Country> testCountry(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
 	{
 //		Country country = countryRep.findById(countryId).orElseThrow(
 //				() -> new ResourceNotFoundException("Not found id"));
-		List<Country> country = countryRep.findCountryByNameVal(5L); 
+		
+		long population = ((Integer) map.get("population")).longValue();
+		
+		List<Country> country = countryRep.findCountryByNameVal(population); 
 		return country;
 	}
 	
