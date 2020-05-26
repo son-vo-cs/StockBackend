@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.http.HttpStatus;
 import com.example.demo.model.AppUser;
+import com.example.demo.model.Country;
 import com.example.demo.repository.CountryRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.exception.*;
@@ -21,6 +22,23 @@ public class UserController {
 	@Autowired
 	private UserRepository userRep;
 	
+	@PostMapping("/login")
+	public List<AppUser> login(String email, String pass) throws ResourceNotFoundException
+	{
+		
+		List<AppUser> users = userRep.login(email,  pass); 
+		return users;
+	}
+
+	@PutMapping("/set-fund")
+	public void setFund(long id, float fund) throws ResourceNotFoundException
+	{
+		
+		userRep.setFun(fund, id);
+	}
+	
 	
 
+		
+	
 }
