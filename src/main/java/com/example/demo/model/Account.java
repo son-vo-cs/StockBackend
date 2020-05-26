@@ -11,6 +11,9 @@ import javax.persistence.Table;
 @Table(name = "account")
 public class Account {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long fid;
 	private long id;
 	private int shares;
 	private String symbol;

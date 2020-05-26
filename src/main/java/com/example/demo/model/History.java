@@ -9,23 +9,27 @@ import javax.persistence.Table;
 @Table(name = "history")
 public class History {
 	
-	private String id, symbol, date;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long fid;
+	private long id;
+	private String symbol, date;
 	private int change;
 	public History() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public History(String id, String symbol, String date, int change) {
+	public History(long id, String symbol, String date, int change) {
 		super();
 		this.id = id;
 		this.symbol = symbol;
 		this.date = date;
 		this.change = change;
 	}
-	public String getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getSymbol() {
