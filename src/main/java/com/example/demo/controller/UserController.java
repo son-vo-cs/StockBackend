@@ -45,7 +45,7 @@ public class UserController {
 	}
 	
 	@PostMapping(value = "register")
-    public Country createUser(@RequestBody AppUser user)
+    public AppUser createUser(@RequestBody AppUser user)
     {
 		return this.userRep.save(user);
     }
