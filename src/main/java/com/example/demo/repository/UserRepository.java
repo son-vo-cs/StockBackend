@@ -19,7 +19,8 @@ public interface UserRepository extends JpaRepository<AppUser, Long>{
 	void setFun(@Param("fund") float fund, @Param("id") long id);
 	
 	
-	
+	@Query("SELECT user FROM AppUser user where user.email = :email")
+	List<AppUser> checkUser(@Param("email") String email);
 	
 	
 }

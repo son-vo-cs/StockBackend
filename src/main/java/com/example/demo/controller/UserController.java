@@ -29,6 +29,21 @@ public class UserController {
 		List<AppUser> users = userRep.login(email,  pass); 
 		return users;
 	}
+	
+	@PostMapping("check-valid-user")
+	public Map<String, Boolean> checkUser(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
+	{
+		
+		String email = (String) map.get("email");
+		List<AppUser> users = userRep.checkUser(email); 
+		Map<String, Boolean> result = new HashMap<String, Boolean>();
+		if (users == null || users.size() < 1)
+			result.put("result", true);
+		else
+			result.put("result", false);
+		return result;
+	}
+
 
 	@PutMapping("set-fund")
 	public void setFund(@RequestBody Map<String, Object> map) throws ResourceNotFoundException

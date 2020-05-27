@@ -24,6 +24,6 @@ public interface AccountRepository extends JpaRepository<Account, Long>{
 	
 	@Modifying
 	@Query("update Account account set account.shares = :shares where account.id = :id AND account.symbol = :symbol")
-	void setShares(@Param("fund") float fund, @Param("id") Long id, @Param("symbol") String symbol);
+	void setShares(@Param("shares") Integer shares, @Param("id") Long id, @Param("symbol") String symbol);
 	
 }

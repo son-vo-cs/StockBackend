@@ -37,4 +37,14 @@ public class AccountController {
 		accRep.remove(id, symbol);
 		
 	}
+	
+	@PutMapping("set-shares")
+	public void setFund(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
+	{
+		
+		Integer shares = (Integer) map.get("fund");
+		Long id = (Long) map.get("id");
+		String symbol = (String) map.get("symbol");
+		accRep.setShares(shares, id, symbol);
+	}
 }
