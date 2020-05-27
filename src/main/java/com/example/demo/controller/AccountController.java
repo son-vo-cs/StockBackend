@@ -39,7 +39,7 @@ public class AccountController {
 	}
 	
 	@PutMapping("set-shares")
-	public void setFund(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
+	public void setShares(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
 	{
 		
 		Integer shares = (Integer) map.get("fund");
