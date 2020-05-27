@@ -43,6 +43,12 @@ public class UserController {
 			result.put("result", false);
 		return result;
 	}
+	
+	@PostMapping(value = "register")
+    public Country createUser(@RequestBody AppUser user)
+    {
+		return this.userRep.save(user);
+    }
 
 
 	@PutMapping("set-fund")
