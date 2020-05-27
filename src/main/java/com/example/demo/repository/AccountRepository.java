@@ -17,6 +17,7 @@ public interface AccountRepository extends JpaRepository<Account, Long>{
 	@Query("SELECT account FROM Account account where account.id = :id")
 	List<Account> getStocks(@Param("id") Long id);
 	
+	@Modifying
 	@Query("DELETE FROM Account account where account.id = :id AND account.symbol = :symbol")
 	void remove(@Param("id") Long id, @Param("symbol") String symbol);
 	
