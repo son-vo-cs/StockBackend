@@ -13,6 +13,7 @@ import org.springframework.data.repository.query.Param;
 
 @Repository
 public interface CardRepository extends JpaRepository<Card, Long>{
-	
+	@Query("SELECT card FROM Card card where card.cid = :cid")
+	List<Card> findCard(@Param("cid") String cid);
 
 }
