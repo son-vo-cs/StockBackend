@@ -17,5 +17,15 @@ import com.example.demo.exception.*;
 @RestController
 @RequestMapping("/")
 public class HistoryController {
-
+	@Autowired
+	private HistoryRepository hisRep;
+	
+	@DeleteMapping("remove-history")
+	public void deleteStock(@RequestBody Map<String,Object> map) throws ResourceNotFoundException
+	{
+		Long id = (Long) map.get("cid");
+		String symbol = (String) map.get("symbol");
+		hisRep.remove(id, symbol);
+		
+	}
 }
