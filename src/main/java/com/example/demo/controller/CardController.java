@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.http.HttpStatus;
 import com.example.demo.model.Card;
-import com.example.demo.model.Country;
 import com.example.demo.repository.CardRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.exception.*;
