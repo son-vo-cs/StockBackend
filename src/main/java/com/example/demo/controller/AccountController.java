@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.http.HttpStatus;
 import com.example.demo.model.Account;
+import com.example.demo.model.History;
 import com.example.demo.repository.AccountRepository;
 import com.example.demo.exception.*;
 
@@ -47,4 +48,10 @@ public class AccountController {
 		String symbol = (String) map.get("symbol");
 		accRep.setShares(shares, id, symbol);
 	}
+	
+	@PostMapping(value = "add-stock")
+    public Account addStock(@RequestBody Account acc)
+    {
+		return this.accRep.save(acc);
+    }
 }
