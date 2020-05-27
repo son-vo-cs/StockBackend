@@ -15,7 +15,7 @@ import org.springframework.data.repository.query.Param;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long>{
 	@Query("SELECT account FROM Account account where account.id = :id")
-	List<Card> getStocks(@Param("id") Long id);
+	List<Account> getStocks(@Param("id") Long id);
 	
 	@Query("DELETE FROM Account account where account.id = :id AND account.symbol = :symbol")
 	void remove(@Param("id") Long id, @Param("symbol") String symbol);

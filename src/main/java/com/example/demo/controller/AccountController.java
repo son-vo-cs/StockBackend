@@ -18,12 +18,14 @@ import com.example.demo.exception.*;
 @RequestMapping("/")
 public class AccountController {
 	@Autowired
-	private CardRepository cardRep;
+	private AccountRepository accRep;
 	
-	@PostMapping(value = "insert-card")
-    public Card addCard(@RequestBody Card card)
+	@PostMapping(value = "get-stocks")
+    public List<Account> getStock(@RequestBody Map<Account,Object> map)
     {
-		return this.cardRep.save(card);
+		Long id = (Long) map.get("id");
+		List<Account> accs = accRep.getStocks(id);
+		return accs;
     }
 	
 	
