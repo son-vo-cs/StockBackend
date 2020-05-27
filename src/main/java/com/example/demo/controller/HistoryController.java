@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.http.HttpStatus;
 
-import com.example.demo.model.Country;
 import com.example.demo.model.History;
 import com.example.demo.repository.HistoryRepository;
 import com.example.demo.exception.*;
