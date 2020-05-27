@@ -30,4 +30,12 @@ public class PerformController {
 		List<Perform> pers = performRep.getPerform(id);
 		return pers;
     }
+	
+	@PostMapping(value = "add-perform")
+    public void addStock(@RequestBody Map<String, Perform[]> map)
+    {
+		Perform[] performs = map.get("performs");
+		for (Perform p : performs)
+			this.performRep.save(p);
+    }
 }
