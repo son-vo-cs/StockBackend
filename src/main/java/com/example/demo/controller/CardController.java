@@ -31,13 +31,19 @@ public class CardController {
 	
 	
 	@DeleteMapping("remove-card")
-	public boolean deleteCountry(@RequestBody Map<String,Object> map) throws ResourceNotFoundException
+	public Map<String, Boolean> deleteCountry(@RequestBody Map<String,Object> map) throws ResourceNotFoundException
 	{
 		String id = (String) map.get("cid");
 		List<Card> cards = cardRep.findCard(id);
+		Map<String, Boolean> result = new HashMap<String,Boolean>();
 		if (cards == null || cards.size() == 0)
-			return false;
-		this.cardRep.delete(cards.get(0));
-		return true;
+			result.put("result", false);
+		else
+		{
+			this.cardRep.delete(cards.get(0));
+			result.put("result", true);
+		}
+		return result;
+		
 	}
 }
