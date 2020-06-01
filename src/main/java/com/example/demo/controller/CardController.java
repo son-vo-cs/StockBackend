@@ -15,6 +15,8 @@ import com.example.demo.model.Card;
 import com.example.demo.repository.CardRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.exception.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import com.example.demo.cors.Cors;
 
 @RestController
 @RequestMapping("/")
@@ -22,13 +24,14 @@ public class CardController {
 	@Autowired
 	private CardRepository cardRep;
 	
+	@CrossOrigin(origins = Cors.host)
 	@PostMapping(value = "insert-card")
     public Card addCard(@RequestBody Card card)
     {
 		return this.cardRep.save(card);
     }
 	
-	
+	@CrossOrigin(origins = Cors.host)
 	@DeleteMapping("remove-card")
 	public Map<String, Boolean> deleteCountry(@RequestBody Map<String,Object> map) throws ResourceNotFoundException
 	{
