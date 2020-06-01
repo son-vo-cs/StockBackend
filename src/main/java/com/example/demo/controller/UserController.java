@@ -13,13 +13,15 @@ import org.springframework.http.HttpStatus;
 import com.example.demo.model.AppUser;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.exception.*;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
+import com.example.demo.cors.Cors;
 @RestController
 @RequestMapping("/")
 public class UserController {
 	@Autowired
 	private UserRepository userRep;
 	
+	@CrossOrigin(origins = Cors.host)
 	@PostMapping("login")
 	public List<AppUser> login(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
 	{
@@ -30,6 +32,7 @@ public class UserController {
 		return users;
 	}
 	
+	@CrossOrigin(origins = Cors.host)
 	@PostMapping("check-valid-user")
 	public Map<String, Boolean> checkUser(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
 	{
@@ -44,13 +47,14 @@ public class UserController {
 		return result;
 	}
 	
+	@CrossOrigin(origins = Cors.host)
 	@PostMapping(value = "register")
     public AppUser createUser(@RequestBody AppUser user)
     {
 		return this.userRep.save(user);
     }
 
-
+	@CrossOrigin(origins = Cors.host)
 	@PutMapping("set-fund")
 	public void setFund(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
 	{

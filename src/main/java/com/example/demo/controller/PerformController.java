@@ -15,7 +15,8 @@ import com.example.demo.model.Account;
 import com.example.demo.model.Perform;
 import com.example.demo.repository.PerformRepository;
 import com.example.demo.exception.*;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
+import com.example.demo.cors.Cors;
 @RestController
 @RequestMapping("/")
 
@@ -23,6 +24,7 @@ public class PerformController {
 	@Autowired
 	private PerformRepository performRep;
 	
+	@CrossOrigin(origins = Cors.host)
 	@PostMapping(value = "get-perform")
     public List<Perform> getStock(@RequestBody Map<String,Object> map)
     {
@@ -31,6 +33,7 @@ public class PerformController {
 		return pers;
     }
 	
+	@CrossOrigin(origins = Cors.host)
 	@PostMapping(value = "add-perform")
     public void addStock(@RequestBody Map<String, Perform[]> map)
     {
