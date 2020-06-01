@@ -14,6 +14,8 @@ import com.example.demo.model.Account;
 import com.example.demo.model.History;
 import com.example.demo.repository.AccountRepository;
 import com.example.demo.exception.*;
+import com.example.demo.cors.Cors;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @RequestMapping("/")
@@ -21,6 +23,7 @@ public class AccountController {
 	@Autowired
 	private AccountRepository accRep;
 	
+	@CrossOrigin(origins = Cors.host)
 	@PostMapping(value = "get-stocks")
     public List<Account> getStock(@RequestBody Map<String,Object> map)
     {
@@ -29,7 +32,7 @@ public class AccountController {
 		return accs;
     }
 	
-	
+	@CrossOrigin(origins = Cors.host)
 	@DeleteMapping("remove-stock")
 	public void deleteStock(@RequestBody Map<String,Object> map) throws ResourceNotFoundException
 	{
@@ -39,6 +42,7 @@ public class AccountController {
 		
 	}
 	
+	@CrossOrigin(origins = Cors.host)
 	@PutMapping("set-shares")
 	public void setShares(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
 	{
@@ -49,6 +53,7 @@ public class AccountController {
 		accRep.setShares(shares, id, symbol);
 	}
 	
+	@CrossOrigin(origins = Cors.host)
 	@PostMapping(value = "add-stock")
     public Account addStock(@RequestBody Account acc)
     {

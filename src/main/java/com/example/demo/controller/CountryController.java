@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import com.example.demo.model.Country;
 import com.example.demo.repository.CountryRepository;
 import com.example.demo.exception.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @RequestMapping("/api/v1/")
@@ -22,10 +23,14 @@ public class CountryController {
 	@Autowired
 	private CountryRepository countryRep;
 	
-	@GetMapping("countries")
+	@CrossOrigin(origins = "http://localhost:8080/api/v1")
+	@GetMapping("/countries")
 	public List<Country> getAllCountries()
 	{
-		return countryRep.findAll();
+		
+		List<Country> result = countryRep.findAll();
+		System.out.println(result.size());
+		return result;
 	}
 	
 	@GetMapping("/country/{id}")
