@@ -16,7 +16,7 @@ import org.springframework.data.repository.query.Param;
 public interface HistoryRepository extends JpaRepository<History, Long>{
 	
 	@Modifying
-	@Query("DELETE FROM History his where his.id = :id AND account.symbol = :symbol")
+	@Query("DELETE FROM History his where his.id = :id AND his.symbol = :symbol")
 	void remove(@Param("id") Long id, @Param("symbol") String symbol);
 	
 	
