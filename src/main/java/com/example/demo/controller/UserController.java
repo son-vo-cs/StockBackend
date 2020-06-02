@@ -23,13 +23,23 @@ public class UserController {
 	
 	@CrossOrigin(origins = Cors.host)
 	@PostMapping("login")
-	public List<AppUser> login(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
+	public Map<String, Object> login(@RequestBody Map<String, Object> map) throws ResourceNotFoundException
 	{
 		
+		Map<String, Object> result = new HashMap<String, Object>();
 		String email = (String) map.get("email");
 		String pass = (String) map.get("password");
-		List<AppUser> users = userRep.login(email,  pass); 
-		return users;
+		List<AppUser> users = userRep.login(email,  pass);
+		if (users.size() < 1)
+		{
+			result.put("valid", Boolean.FALSE);
+			return result;
+		}
+		result.put("valid", Boolean.TRUE);
+		result.put("id", users.get(0).getId());
+		result.put("name", users.get(0).getName());
+		result.put("fund", users.get(0).getFund());
+		return result;
 	}
 	
 	@CrossOrigin(origins = Cors.host)
